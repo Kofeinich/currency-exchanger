@@ -20,6 +20,7 @@ export async function getExchangeData() {
         return r.data
     } catch (err) {
         console.error('Mock data will be returned' + err);
+        console.log(MOCK_EXCHANGE)
         return MOCK_EXCHANGE
     }
 }

@@ -13,6 +13,7 @@ export async function getLocation() {
         return r.data
     }catch (err) {
         console.error('Mock data will be returned' + err);
+        console.log(MOCK_LOCATION)
         return MOCK_LOCATION
     }
 }

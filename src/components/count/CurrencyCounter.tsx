@@ -9,21 +9,17 @@ export const CurrencyCounter = () => {
     const [amount, setAmount] = useState<ConvertCurrenciesModel>()
 
     useEffect(() => {
-        setTimeout(() =>
-                getLocation().then(loc => {
-                    setLocation(loc)
-                }),
-            1000
-        )
-        setTimeout(() =>
-                getExchangeData().then(value => {
-                    setAmount(value)
-                }),
-            1050)
+        const f = () => {
+            getLocation().then(loc => {
+                setLocation(loc)
+            })
+            getExchangeData().then(value => {
+                setAmount(value)
+            })
+        }
+        f()
+        setInterval(f, 600000)
     }, [])
-
-    console.log(location)
-    console.log(amount)
 
     return (
         <></>
