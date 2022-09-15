@@ -2,17 +2,17 @@ import {CurrencyQuotesModel} from "../models/CurrencyQuotesModel";
 
 export const currencyCounter = (quotes: CurrencyQuotesModel, baseCurrencyCode: string) => {
     let newCoe: number = 1
+    let newConvert : string = ''
     for (let convert in quotes) {
         let c = convert.indexOf(baseCurrencyCode)
-        if (c !== -1) {
-            newCoe = 1 / quotes[convert]
-            newCoe.toFixed(3)
+        if (c === 3) {
+            newCoe = 1 / (quotes[convert])
         }
-        convert = convert.slice(3, 6)
     }
+    const newQuotes: CurrencyQuotesModel = {}
     for (let convert in quotes) {
-        quotes[convert] = quotes[convert] * newCoe
-        convert = `${baseCurrencyCode}${convert}`
+        newConvert = convert.slice(3, 6)
+        newQuotes[`${baseCurrencyCode}${newConvert}`] = (quotes[convert] * newCoe)
     }
-    return quotes
+    return newQuotes
 }

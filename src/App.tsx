@@ -1,10 +1,11 @@
 import React from 'react';
+import {View} from "./components/view/View";
 
 function App() {
 
     return (
         <>
-            <h1 className={'text-3xl font-bold underline'}>Hi</h1>
+           <View/>
         </>
     );
 }
