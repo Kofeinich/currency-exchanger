@@ -1,11 +1,11 @@
 import React from 'react';
-import {View} from "./components/view/View";
+import {MainPage} from "./components/pages/MainPage";
 
 function App() {
 
     return (
         <>
-           <View/>
+           <MainPage/>
         </>
     );
 }
