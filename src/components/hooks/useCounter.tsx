@@ -34,5 +34,5 @@ export function useCounter() {
 
     }, [location, amount])
 
-    return {newAmount}
+    return {newAmount, location}
 }

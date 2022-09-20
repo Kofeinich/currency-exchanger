@@ -1,28 +1,20 @@
 import {useCounter} from "../hooks/useCounter";
-import {currencyCounter} from "../../service-functions/currencyCounter";
-import {useEffect, useState} from "react";
-import {CurrencyQuotesModel} from "../../models/CurrencyQuotesModel";
 import {Panel} from "../view/Panel";
+
 
 export const MainPage = () => {
 
-    const {newAmount} = useCounter()
-    const [current, setCurrent] = useState<CurrencyQuotesModel>({"": 0,})
+    const {newAmount, location} = useCounter()
 
-    useEffect(() => {
-        setCurrent(newAmount)
-    },[newAmount])
-
-    console.log(current)
-
-
+    console.log(newAmount)
+    console.log(location)
 
     return (
         <div className={
-            'flex justify-center min-w-[400px]  ' +
-            'w-screen h-screen bg-neutral-800 m-auto'
+            'w-screen static h-screen flex justify-center min-w-[400px]' +
+            ' white m-auto'
         }>
-            <Panel/>
+            <Panel cur={newAmount} loc={location}/>
         </div>
     )
 }

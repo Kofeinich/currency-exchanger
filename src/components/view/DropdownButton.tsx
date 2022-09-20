@@ -1,18 +1,33 @@
 import {useState, useRef, useEffect} from "react";
+import {CurrencyQuotesModel} from "../../models/CurrencyQuotesModel";
 
 interface ButtonProps{
     id: string
     name : string
+    cur : CurrencyQuotesModel
 }
 
 
 export const DropdownButton = (props : ButtonProps) => {
     const [btnName, setBtnName] = useState(props.name)
-    const [hidden, setHidden] = useState(false)
+    const [data, setData] = useState(props.cur)
+    const [hidden, setHidden] = useState(true)
+
+    let obj : CurrencyQuotesModel = data
+    let newConvert : string = ''
+
+    for (let convert in data){
+        newConvert = convert.slice(3, 6)
+        obj[`${newConvert}`] = 0
+    }
+
+    console.log(obj)
+
+
+
     const handleClick = () => {
         let state = hidden
         setHidden(!state)
-        console.log(hidden)
     }
 
     return (
@@ -47,7 +62,7 @@ export const DropdownButton = (props : ButtonProps) => {
             </button>
             <ul
                 className={ `${hidden ? "hidden " : " "}` +
-                    'w-[180px] shadow-md absolute max-h-[150px] overflow-auto bg-neutral-600 text-center text-white'
+                    'w-[180px] z-10 shadow-md absolute max-h-[150px] overflow-auto bg-neutral-600 text-center text-white'
                 }
                 aria-labelledby={props.id}
             >
